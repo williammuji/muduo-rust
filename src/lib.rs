@@ -1,6 +1,8 @@
 pub mod countdown_latch;
 pub use countdown_latch::CountdownLatch;
 
+use tokio::net::{TcpListener, TcpStream};
+use tokio::time::{self, Duration};
 
 /// Error returned by most functions.
 ///
@@ -19,3 +21,22 @@ pub type Error = Box<dyn std::error::Error + Send + Sync>;
 ///
 /// This is defined as a convenience.
 pub type Result<T> = std::result::Result<T, Error>;
+
+pub async fn accept_backoff(listener: &TcpListener) -> Result<TcpStream> {
+    let mut backoff = 1;
+
+    loop {
+        match listener.accept().await {
+            Ok((socket, _)) => return Ok(socket),
+            Err(err) => {
+                if backoff > 64 {
+                    return Err(err.into());
+                }
+            }
+        }
+
+        time::sleep(Duration::from_secs(backoff)).await;
+
+        backoff *= 2;
+    }
+}

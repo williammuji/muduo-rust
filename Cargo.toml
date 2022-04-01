@@ -26,4 +26,5 @@ httpdate = "1.0.2"
 httparse = "1.6.0"
 plotters = "0.3.1"
 image = "0.24.0"
+resolve = "0.2"
 clap = { version = "3.1.2", features = ["derive"] }
