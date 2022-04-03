@@ -1,2 +1,2 @@
 # muduo-rust
-Muduo example by Rust
+Muduo example implementation in Rust

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package nqueens;
+
+
+message SubProblemRequest {
+  int32 nqueens = 1;
+  int32 first_row = 2;
+  int32 second_row = 3;
+}
+
+message SubProblemResponse {
+  int64 count = 1;
+  double seconds = 2;
+}
+
+service NQueensService {
+  rpc Solve(SubProblemRequest) returns (SubProblemResponse);
+}

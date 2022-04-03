@@ -28,3 +28,18 @@ plotters = "0.3.1"
 image = "0.24.0"
 resolve = "0.2"
 clap = { version = "3.1.2", features = ["derive"] }
+tonic = "0.7"
+prost = "0.10"
+
+
+[build-dependencies]
+tonic-build = "0.7"
+
+
+[[bin]]
+name = "nqueens-server"
+path = "src/bin/nqueens/server.rs"
+
+[[bin]]
+name = "nqueens-client"
+path = "src/bin/nqueens/client.rs"
