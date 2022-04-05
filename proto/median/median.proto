@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+
+package median;
+
+message Empty {
+}
+
+message QueryResponse {
+  int64 count = 1;
+  int64 min = 2;
+  int64 max = 3;
+  int64 sum = 4;  // should be int128
+}
+
+message SearchRequest {
+  int64 guess = 1;
+}
+
+message SearchResponse {
+  int64 smaller = 1;
+  int64 same = 2;
+}
+
+message GenerateRequest {
+  int64 count = 1;
+  int64 min = 2; // inclusive
+  int64 max = 3; // exclusive
+}
+
+service Sorter {
+  rpc Query(Empty) returns (QueryResponse);
+  rpc Search(SearchRequest) returns (SearchResponse);
+
+  rpc Generate(GenerateRequest) returns (Empty);
+}

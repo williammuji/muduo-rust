@@ -30,6 +30,8 @@ resolve = "0.2"
 clap = { version = "3.1.2", features = ["derive"] }
 tonic = "0.7"
 prost = "0.10"
+superslice = "0.1"
+async-trait = "0.1.53"
 
 
 [build-dependencies]
@@ -43,3 +45,11 @@ path = "src/bin/nqueens/server.rs"
 [[bin]]
 name = "nqueens-client"
 path = "src/bin/nqueens/client.rs"
+
+[[bin]]
+name = "median-sorter"
+path = "src/bin/median/sorter.rs"
+
+[[bin]]
+name = "median-collector"
+path = "src/bin/median/collector.rs"
