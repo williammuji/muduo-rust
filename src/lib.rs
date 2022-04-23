@@ -1,6 +1,9 @@
 pub mod countdown_latch;
 pub use countdown_latch::CountdownLatch;
 
+pub mod blocking_queue;
+pub use blocking_queue::BlockingQueue;
+
 use tokio::net::{TcpListener, TcpStream};
 use tokio::time::{self, Duration};
 
