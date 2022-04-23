@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package wordfreq;
+
+message Empty {
+}
+
+message GetInfoResponse {
+  bool ready = 1;
+  int64 maxKey = 2;
+  int64 keyCount = 3;
+  repeated string peers = 4;
+}
+
+message GetHistogramRequest {
+  repeated int64 pivots = 1;
+}
+
+message GetHistogramResponse {
+  repeated int64 counts = 1;
+}
+
+message ShuffleKeyRequest {
+  repeated int64 pivots = 1; // size() == peers.size()
+}
+
+message ShuffleKeyResponse {
+  string error = 1;
+  double elapsed = 2;
+}
+
+message ShardKeyRequest {
+  int32 partition = 1;
+  repeated int64 keys = 2; 
+}
+
+message SortKeyResponse {
+  int32 partition = 1;
+  int64 count = 2;
+  optional int64 minKey = 3;
+  optional int64 maxKey = 4;
+}
+
+// message ShardWordRequest {
+//   int32 partition = 1;
+//   repeated int64 keys = 2; 
+//   repeated string words = 3; 
+// }
+
+service WordFrequencyService {
+  rpc GetInfo(Empty) returns (GetInfoResponse);
+  rpc Quit(Empty) returns (Empty);
+
+  // get count of elements less than or equal to pivots
+  rpc GetHistogram(GetHistogramRequest) returns (GetHistogramResponse);
+
+  // called by controller
+  rpc ShuffleKey(ShuffleKeyRequest) returns (ShuffleKeyResponse);
+
+  // called by workers
+  rpc ShardKey(ShardKeyRequest) returns (Empty);
+
+  rpc SortKey(Empty) returns (SortKeyResponse);
+}

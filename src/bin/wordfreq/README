@@ -1,0 +1,27 @@
+A distributed word counting example.
+
+A hasher shards <word,count> to multiple receivers by hash(word).
+
+A receiver collects <word,count> from multiple hashers
+and writes the result to disk.
+
+Example run with 3 hashers and 4 receivers:
+1. run 4 receivers on 4 machines, namely ip1:port1, ip2:port2, ip3:port3, ip4:port4.
+   a. on ip1, RUST_LOG=info ./target/debug/receiver 127.0.0.1:5501 3
+   b. on ip2, RUST_LOG=info ./target/debug/receiver 127.0.0.1:5502 3
+   c. on ip3, RUST_LOG=info ./target/debug/receiver 127.0.0.1:5503 3
+   d. on ip4, RUST_LOG=info ./target/debug/receiver 127.0.0.1:5504 3
+2. run 3 hashers on 3 machines.
+   a. on ip1, RUST_LOG=info ./target/debug/hasher "127.0.0.1:5501,127.0.0.1:5502,127.0.0.1:5503,127.0.0.1:5504" /tmp/random_words_1
+   b. on ip2, RUST_LOG=info ./target/debug/hasher "127.0.0.1:5501,127.0.0.1:5502,127.0.0.1:5503,127.0.0.1:5504" /tmp/random_words_2
+   c. on ip3, RUST_LOG=info ./target/debug/hasher "127.0.0.1:5501,127.0.0.1:5502,127.0.0.1:5503,127.0.0.1:5504" /tmp/random_words_3 /tmp/random_words_4
+3. wait all hashers and receivers exit.
+
+4. 
+   a. RUST_LOG=info ./target/debug/wordfreq -a 127.0.0.1:6001 -s shard_1
+   b. RUST_LOG=info ./target/debug/wordfreq -a 127.0.0.1:6002 -s shard_2
+   c. RUST_LOG=info ./target/debug/wordfreq -a 127.0.0.1:6003 -s shard_3
+   d. RUST_LOG=info ./target/debug/wordfreq -a 127.0.0.1:6004 -s shard_4
+
+5. 
+   a. RUST_LOG=info ./target/debug/control 
