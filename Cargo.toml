@@ -32,6 +32,8 @@ tonic = "0.7"
 prost = "0.10"
 superslice = "0.1"
 async-trait = "0.1.53"
+hyper = "0.14"
+
 
 [build-dependencies]
 tonic-build = "0.7"
@@ -68,3 +70,7 @@ path = "src/bin/wordfreq/hasher.rs"
 [[bin]]
 name = "receiver"
 path = "src/bin/wordfreq/receiver.rs"
+
+[[bin]]
+name = "shorturl"
+path = "src/bin/shorturl/shorturl.rs"
