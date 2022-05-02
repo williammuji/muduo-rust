@@ -33,6 +33,8 @@ prost = "0.10"
 superslice = "0.1"
 async-trait = "0.1.53"
 hyper = "0.14"
+md-5 = "0.10.1"
+hex = "0.4"
 
 
 [build-dependencies]
@@ -74,3 +76,11 @@ path = "src/bin/wordfreq/receiver.rs"
 [[bin]]
 name = "shorturl"
 path = "src/bin/shorturl/shorturl.rs"
+
+[[bin]]
+name = "filetransfer"
+path = "src/bin/filetransfer/filetransfer.rs"
+
+[[bin]]
+name = "download"
+path = "src/bin/filetransfer/download.rs"
