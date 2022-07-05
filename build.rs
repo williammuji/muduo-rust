@@ -1,24 +1,19 @@
 fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
     tonic_build::configure()
         .build_server(true)
-        .compile(
-            &["proto/nqueens/nqueens.proto"],
-            &["proto/nqueens"],
-            )?;
+        .compile(&["proto/nqueens/nqueens.proto"], &["proto/nqueens"])?;
 
     tonic_build::configure()
         .build_server(true)
-        .compile(
-            &["proto/median/median.proto"],
-            &["proto/median"],
-            )?;
-    
+        .compile(&["proto/median/median.proto"], &["proto/median"])?;
+
     tonic_build::configure()
         .build_server(true)
-        .compile(
-            &["proto/wordfreq/wordfreq.proto"],
-            &["proto/wordfreq"],
-            )?;
+        .compile(&["proto/wordfreq/wordfreq.proto"], &["proto/wordfreq"])?;
+
+    tonic_build::configure()
+        .build_server(true)
+        .compile(&["proto/logrecord/logrecord.proto"], &["proto/logrecord"])?;
 
     Ok(())
 }

@@ -89,3 +89,15 @@ path = "src/bin/filetransfer/download.rs"
 [[bin]]
 name = "fastcgi"
 path = "src/bin/fastcgi/main.rs"
+
+[[bin]]
+name = "ttcp"
+path = "src/bin/ace/ttcp.rs"
+
+[[bin]]
+name = "ace-server"
+path = "src/bin/ace/server.rs"
+
+[[bin]]
+name = "ace-client"
+path = "src/bin/ace/client.rs"

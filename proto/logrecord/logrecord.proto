@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package logrecord;
+
+message LogRecord {
+  // must present in first message
+  message Heartbeat {
+    string hostname = 1;
+    string process_name = 2;
+    int32 process_id = 3;
+    int64 process_start_time = 4; // microseconds sinch epoch
+    string username = 5;
+  }
+
+  Heartbeat heartbeat = 1;
+  // muduo/base/Logging.h
+  // enum LogLevel
+  // {
+  //   TRACE, // 0
+  //   DEBUG, // 1
+  //   INFO,  // 2
+  //   WARN,  // 3
+  //   ERROR, // 4
+  //   FATAL, // 5
+  // };
+  int32 level = 2;
+  int32 thread_id = 3;
+  int64 timestamp = 4; // microseconds sinch epoch
+  string message = 5;
+  // optional: source file, source line, function name
+}
+
+message Empty {}
+
+service LogRecordService { rpc SendLog(LogRecord) returns (Empty); }
