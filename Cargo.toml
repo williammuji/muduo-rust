@@ -101,3 +101,11 @@ path = "src/bin/ace/server.rs"
 [[bin]]
 name = "ace-client"
 path = "src/bin/ace/client.rs"
+
+[[bin]]
+name = "asio-server"
+path = "src/bin/asio/server.rs"
+
+[[bin]]
+name = "asio-client"
+path = "src/bin/asio/client.rs"
