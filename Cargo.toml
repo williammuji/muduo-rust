@@ -36,7 +36,7 @@ hyper = "0.14"
 md-5 = "0.10.1"
 hex = "0.4"
 dns-lookup = "1.0.8"
-
+curl = "0.4.43"
 
 [build-dependencies]
 tonic-build = "0.7"
@@ -109,3 +109,11 @@ path = "src/bin/asio/server.rs"
 [[bin]]
 name = "asio-client"
 path = "src/bin/asio/client.rs"
+
+[[bin]]
+name = "mcurl"
+path = "src/bin/curl/mcurl.rs"
+
+[[bin]]
+name = "curl_download"
+path = "src/bin/curl/download.rs"
