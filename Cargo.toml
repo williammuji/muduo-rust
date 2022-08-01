@@ -117,3 +117,11 @@ path = "src/bin/curl/mcurl.rs"
 [[bin]]
 name = "curl_download"
 path = "src/bin/curl/download.rs"
+
+[[bin]]
+name = "demux"
+path = "src/bin/multiplexer/demux.rs"
+
+[[bin]]
+name = "multiplexer"
+path = "src/bin/multiplexer/multiplexer.rs"
