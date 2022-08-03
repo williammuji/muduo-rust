@@ -37,6 +37,7 @@ md-5 = "0.10.1"
 hex = "0.4"
 dns-lookup = "1.0.8"
 curl = "0.4.43"
+tower = { version = "0.4" }
 
 [build-dependencies]
 tonic-build = "0.7"
@@ -125,3 +126,43 @@ path = "src/bin/multiplexer/demux.rs"
 [[bin]]
 name = "multiplexer"
 path = "src/bin/multiplexer/multiplexer.rs"
+
+[[bin]]
+name = "pb_rpc_server"
+path = "src/bin/protobuf/rpc/server.rs"
+
+[[bin]]
+name = "pb_rpc_client"
+path = "src/bin/protobuf/rpc/client.rs"
+
+[[bin]]
+name = "pb_resolver_server"
+path = "src/bin/protobuf/resolver/server.rs"
+
+[[bin]]
+name = "pb_resolver_client"
+path = "src/bin/protobuf/resolver/client.rs"
+
+[[bin]]
+name = "pb_rpcbench_server"
+path = "src/bin/protobuf/rpcbench/server.rs"
+
+[[bin]]
+name = "pb_rpcbench_client"
+path = "src/bin/protobuf/rpcbench/client.rs"
+
+[[bin]]
+name = "pb_balancer_server"
+path = "src/bin/protobuf/balancer/server.rs"
+
+[[bin]]
+name = "pb_balancer_client"
+path = "src/bin/protobuf/balancer/client.rs"
+
+[[bin]]
+name = "pb_dynamic_balancer_server"
+path = "src/bin/protobuf/dynamic_balancer/server.rs"
+
+[[bin]]
+name = "pb_dynamic_balancer_client"
+path = "src/bin/protobuf/dynamic_balancer/client.rs"
