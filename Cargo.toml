@@ -166,3 +166,15 @@ path = "src/bin/protobuf/dynamic_balancer/server.rs"
 [[bin]]
 name = "pb_dynamic_balancer_client"
 path = "src/bin/protobuf/dynamic_balancer/client.rs"
+
+[[bin]]
+name = "sudoku_server"
+path = "src/bin/sudoku/server.rs"
+
+[[bin]]
+name = "sudoku_client"
+path = "src/bin/sudoku/client.rs"
+
+[[bin]]
+name = "sudoku_loadtest"
+path = "src/bin/sudoku/loadtest.rs"
